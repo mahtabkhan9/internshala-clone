@@ -1,15 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FaBars } from 'react-icons/fa';
 import { MdArrowDropDown } from 'react-icons/md';
 
 const Header = () => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   return (
     <header className="bg-white border-b border-gray-100 sticky top-0 z-50 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-[72px]">
           {/* logo & mobile menu */ }
           <div className="flex items-center h-full">
-            <FaBars className="h-5 w-5 text-gray-500 md:hidden mr-4 cursor-pointer" />
+            <FaBars 
+              className="h-5 w-5 text-gray-500 md:hidden mr-4 cursor-pointer" 
+              onClick={() => setIsMobileMenuOpen(true)}
+            />
             
             <div className="flex-shrink-0 flex items-center cursor-pointer pl-2">
               <img src="https://internshala.com/static/images/common/new_internshala_logo.svg" alt="Internshala" className="h-7" />
@@ -45,8 +50,38 @@ const Header = () => {
               </div>
             </div>
           </div>
+
+          {/* mobile register button */}
+          <div className="md:hidden flex items-center">
+            <button className="bg-[#00a5ec] text-white font-medium text-[14px] px-4 py-1.5 rounded-[4px] hover:bg-[#008bdc] transition-colors">
+              Register
+            </button>
+          </div>
         </div>
       </div>
+
+      {/* Mobile Drawer */}
+      {isMobileMenuOpen && (
+        <div className="fixed inset-0 z-[60] bg-white flex flex-col md:hidden">
+          <div className="flex items-center justify-between p-4 border-b border-gray-100">
+            <img src="https://internshala.com/static/images/common/new_internshala_logo.svg" alt="Internshala" className="h-6" />
+            <button onClick={() => setIsMobileMenuOpen(false)} className="text-gray-500 text-3xl font-light cursor-pointer">&times;</button>
+          </div>
+          
+          <div className="flex flex-col py-2 overflow-y-auto">
+            <a href="#" className="px-6 py-4 text-[16px] text-[#484848] font-medium hover:bg-gray-50">Internships</a>
+            <a href="#" className="px-6 py-4 text-[16px] text-[#484848] font-medium hover:bg-gray-50 flex items-center">
+              Jobs
+            </a>
+            <a href="#" className="px-6 py-4 text-[16px] text-[#484848] font-medium hover:bg-gray-50 flex items-center">
+              Courses 
+              <span className="ml-2 bg-[#f89c0e] text-white text-[10px] font-bold px-1.5 py-0.5 rounded-sm tracking-wide">OFFER</span>
+            </a>
+            <div className="border-t border-gray-100 my-2"></div>
+            <a href="#" className="px-6 py-4 text-[16px] text-[#484848] font-medium hover:bg-gray-50">Login / Register</a>
+          </div>
+        </div>
+      )}
     </header>
   );
 };

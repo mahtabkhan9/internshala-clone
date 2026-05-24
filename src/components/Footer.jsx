@@ -42,8 +42,8 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row justify-between items-end gap-6">
-          <div className="flex flex-wrap items-center gap-4">
+        <div className="flex flex-col md:flex-row justify-between items-center md:items-end gap-6">
+          <div className="flex flex-wrap justify-center md:justify-start items-center gap-4">
             {/* app store buttons */}
             <a href="#" className="border border-white rounded-md px-3 py-1.5 flex items-center gap-2 hover:bg-white hover:text-black transition-colors group">
               <FaGooglePlay className="text-[18px]" />

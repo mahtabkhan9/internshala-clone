@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import FiltersSidebar from './FiltersSidebar';
 import InternshipCard from './InternshipCard';
 import { MdKeyboardArrowRight } from 'react-icons/md';
+import { FiFilter } from 'react-icons/fi';
 
 const SearchPage = () => {
   const [internships, setInternships] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [isMobileFiltersOpen, setIsMobileFiltersOpen] = useState(false);
   
   const [filters, setFilters] = useState({
     profile: '',
@@ -89,6 +91,16 @@ const SearchPage = () => {
         </div>
       </div>
 
+      {/* Mobile Filters Pill Button */}
+      <div className="md:hidden flex justify-center mb-6">
+        <button 
+          onClick={() => setIsMobileFiltersOpen(true)}
+          className="flex items-center text-[#484848] font-medium text-[14px] border border-gray-300 rounded-full px-5 py-1.5 hover:bg-gray-50"
+        >
+          Filters <FiFilter className="ml-2 text-[#00a5ec] text-lg" />
+        </button>
+      </div>
+
       <div className="md:ml-[304px] lg:ml-[334px] text-center mb-6">
         <h1 className="text-[20px] md:text-[22px] font-semibold text-[#333333] mb-2">
           {filteredInternships.length} Total Internships
@@ -100,7 +112,12 @@ const SearchPage = () => {
 
       <div className="flex flex-col md:flex-row gap-6">
         <div className="w-full md:w-[280px] lg:w-[310px] flex-shrink-0">
-          <FiltersSidebar filters={filters} setFilters={setFilters} />
+          <FiltersSidebar 
+            filters={filters} 
+            setFilters={setFilters} 
+            isMobileOpen={isMobileFiltersOpen} 
+            setIsMobileOpen={setIsMobileFiltersOpen} 
+          />
         </div>
         
         <div className="flex-1 min-w-0">

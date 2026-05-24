@@ -7,7 +7,7 @@ const InternshipCard = ({ internship }) => {
   const [imageError, setImageError] = useState(false);
 
   return (
-    <div className="bg-white rounded-xl shadow-[0_1px_2px_rgba(0,0,0,0.06)] border border-gray-100 p-5 md:p-6 mb-4 hover:shadow-[0_4px_16px_rgba(0,0,0,0.1)] transition-all duration-300">
+    <div className="bg-white rounded-xl shadow-[0_1px_2px_rgba(0,0,0,0.06)] border border-gray-100 p-5 md:p-6 mb-4 hover:shadow-[0_4px_16px_rgba(0,0,0,0.1)] transition-all duration-300 cursor-pointer">
       <div className="flex justify-between items-start mb-4">
         <div>
           <h3 className="text-[18px] font-semibold text-[#333333] mb-1">
@@ -43,7 +43,7 @@ const InternshipCard = ({ internship }) => {
         </div>
       </div>
 
-      <div className="flex items-center gap-6 text-[#484848] text-[14px] mb-4 font-medium">
+      <div className="flex flex-wrap items-center gap-y-2 gap-x-6 text-[#484848] text-[14px] mb-4 font-medium">
         <div className="flex items-center">
           <IoLocationOutline className="mr-1.5 text-gray-500 text-lg" />
           <span>
